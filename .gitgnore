@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+
+# Angular (client) node_modules
+client/node_modules/
+
+# Angular build output
+client/dist/
+
+# Optional: MacOS specific files
+.DS_Store
+
+# Optional: Logs
+logs
+*.log
+
+# Optional: Environment variables
+.env
+
+# Optional: npm-debug
+npm-debug.log*
