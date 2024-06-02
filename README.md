@@ -74,6 +74,8 @@ MONGODB_URI=mongodb://localhost:27017/file_download_system
 
 ### Upload File
 
+![](upload.jpeg)
+
 - **URL**: `http://localhost:3000/api/files/upload`
 - **Method**: `POST`
 - **Body**: `form-data`
