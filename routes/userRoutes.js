@@ -1,11 +1,8 @@
-//ways related to user operations.
-
 const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/userController');
 
-// Örnek GET rotası
-router.get('/', (req, res) => {
-  res.send('User routes');
-});
+router.post('/register', userController.registerUser);
+router.post('/login', userController.loginUser);
 
 module.exports = router;

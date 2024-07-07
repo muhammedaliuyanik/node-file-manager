@@ -1,40 +1,33 @@
-// server.js (dedicate configration and route) =>  routes => controller => database => middleware => public
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors = require('cors');
+const config = require('./config/config');
 
-// .env dosyasını yükle
 dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
-// MongoDB bağlantısı
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {});
-    console.log('Connected to MongoDB');
-  } catch (err) {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
-  }
-};
+mongoose.connect(config.MONGO_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-connectDB();
+app.get('/', (req, res) => {
+  res.send('Welcome to the File Download System API!');
+});
 
-// API rotalarını içe aktarın
 const fileRoutes = require('./routes/fileRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-// API rotalarını kullanın
 app.use('/api/files', fileRoutes);
+app.use('/api/users', userRoutes);
 
-// Yükleme klasörünü statik dosya olarak sunun
 app.use('/uploads', express.static('uploads'));
 
-// Sunucuyu başlatın
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
