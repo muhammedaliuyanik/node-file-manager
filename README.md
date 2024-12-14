@@ -9,10 +9,10 @@ This project demonstrates a Node.js-based file management system that supports f
 
 ### Installation
 ```bash
-git clone https://github.com/muhammedaliuyanik/node-file-manager.git<br>
-cd node-file-manager<br>
-npm install<br>
-npm start<br>
+git clone https://github.com/muhammedaliuyanik/node-file-manager.git
+cd node-file-manager
+npm install
+npm start
 ```
 ## Project Structure
 node-file-manager/
